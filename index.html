@@ -233,7 +233,6 @@
         </div>
 
         <div class="form-container">
-            <!-- FIXED: Added proper Netlify form attributes -->
             <form id="flyerIntakeForm" 
                   name="cultural-connections-intake" 
                   method="POST" 
@@ -417,8 +416,6 @@
     </div>
 
     <script>
-        // Remove the custom submit handler - let Netlify handle it
-        
         // File upload feedback and validation
         document.querySelectorAll('input[type="file"]').forEach(input => {
             input.addEventListener('change', function() {
