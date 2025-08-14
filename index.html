@@ -237,8 +237,12 @@
                   name="cultural-connections-intake" 
                   method="POST" 
                   action="/success.html"
-                  netlify 
-                  netlify-honeypot="bot-field">
+                  data-netlify="true" 
+                  netlify-honeypot="bot-field"
+                  enctype="multipart/form-data">
+                
+                <!-- CRITICAL: Hidden field for Netlify form recognition -->
+                <input type="hidden" name="form-name" value="cultural-connections-intake" />
                 
                 <!-- Hidden honeypot field for spam protection -->
                 <p style="display: none;">
