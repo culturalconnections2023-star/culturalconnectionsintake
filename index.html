@@ -233,7 +233,19 @@
         </div>
 
         <div class="form-container">
-            <form id="flyerIntakeForm" name="cultural-connections-intake" method="POST" netlify>
+            <!-- FIXED: Added proper Netlify form attributes -->
+            <form id="flyerIntakeForm" 
+                  name="cultural-connections-intake" 
+                  method="POST" 
+                  action="/success.html"
+                  netlify 
+                  netlify-honeypot="bot-field">
+                
+                <!-- Hidden honeypot field for spam protection -->
+                <p style="display: none;">
+                    <label>Don't fill this out: <input name="bot-field" /></label>
+                </p>
+
                 <div class="section">
                     <h3>Client Information</h3>
                     <div class="grid">
@@ -405,23 +417,8 @@
     </div>
 
     <script>
-        document.getElementById('flyerIntakeForm').addEventListener('submit', function(e) {
-            // Show loading state
-            const submitBtn = document.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '🚀 Sending...';
-            submitBtn.disabled = true;
-            
-            // Let the form submit naturally to Formspree
-            // No need to prevent default - Formspree will handle it
-            
-            // Show success message after a brief delay
-            setTimeout(() => {
-                submitBtn.innerHTML = '✅ Submitted Successfully!';
-                submitBtn.style.background = 'linear-gradient(135deg, #00b894 0%, #00a085 100%)';
-            }, 1000);
-        });
-
+        // Remove the custom submit handler - let Netlify handle it
+        
         // File upload feedback and validation
         document.querySelectorAll('input[type="file"]').forEach(input => {
             input.addEventListener('change', function() {
